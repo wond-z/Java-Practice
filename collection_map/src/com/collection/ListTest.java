@@ -46,8 +46,11 @@ public class ListTest {
 //		System.out.println(courseToSelect.size());
 	}
 	
+	/**
+	 * 使用for循环遍历数组
+	 */
 	public void testGet() {
-		System.out.println("使用for：");
+		System.out.println("【使用for】：");
 		int size = courseToSelect.size();
 		for(int i = 0; i < size; i ++) {
 			Course cr = (Course) courseToSelect.get(i);
@@ -57,7 +60,7 @@ public class ListTest {
 	
 	// 使用迭代器遍历数组
 	public void testInterator() {
-		System.out.println("使用迭代器（iterator）：");
+		System.out.println("【使用迭代器（iterator）】：");
 		Iterator it = courseToSelect.iterator();
 		while (it.hasNext()) {
 			Course cr = (Course) it.next();
@@ -67,7 +70,7 @@ public class ListTest {
 	
 	// 使用for each遍历数组
 	public void testForEach() {
-		System.out.println("使用for each：");
+		System.out.println("【使用for each】：");
 		for (Object obj : courseToSelect) {
 			Course cr = (Course) obj;
 			System.out.println("id:" + cr.id + " " + "name:" + cr.name);
