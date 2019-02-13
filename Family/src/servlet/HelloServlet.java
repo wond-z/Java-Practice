@@ -1,11 +1,15 @@
-package com.runoob.family;
+package servlet;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import service.Service;
 
 /**
  * Servlet implementation class HelloServlet
@@ -27,7 +31,12 @@ public class HelloServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+//		response.getWriter().append("Served at: ").append(request.getContextPath());
+		List list;
+		Service service = new Service();
+		list = service.getList();
+		response.getWriter().println(list);
+		
 	}
 
 	/**
