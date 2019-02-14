@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 public class JdbcConnection {
 	private static String driver = "com.mysql.cj.jdbc.Driver";
-	private static String url = "jdbc:mysql://192.168.1.4:3306/family?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false&serverTimezone=GMT%2B8";
+	private static String url = "jdbc:mysql://192.168.1.5:3306/family?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false&serverTimezone=GMT%2B8";
 	private static String user = "root";
 	private static String password = "root";
 	

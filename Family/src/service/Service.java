@@ -12,9 +12,8 @@ import jdbc.JdbcConnection;
 
 public class Service {
 	private Connection dbconnection;
-	private Statement st;
-	private ResultSet rs;
-	private String sql;
+	private Statement st, st1;
+	private ResultSet rs, rs1;
 	private List list;
 	private People pp;
 	
@@ -24,7 +23,7 @@ public class Service {
 		dbconnection = JdbcConnection.getConnection();
 		try {
 			st = dbconnection.createStatement();
-			sql = "select * from peoples";
+			String sql = "select * from peoples";
 			rs = st.executeQuery(sql);
 			
 			while(rs.next()) {
@@ -44,6 +43,19 @@ public class Service {
 			e.printStackTrace();
 		}
 		return list;
+	}
+	
+	public void addRecord(Object params) {
+		dbconnection = JdbcConnection.getConnection();
+		try {
+			st1 = dbconnection.createStatement();
+			String sql="insert into peoples(name, gender, birthday, phone_number, id_card_number) values(params.name, params.gender, params.birthday, params.phone, params.idCard)"; 
+			rs1 = st.executeQuery(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	
 }
