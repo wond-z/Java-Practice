@@ -37,22 +37,24 @@ public class HelloServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
 		List list;
+		int offset = Integer.parseInt(request.getParameter("offset"));
+		int size = Integer.parseInt(request.getParameter("size"));
+
 		Service service = new Service();
-		list = service.getList();
-//		JSONArray ja = new JSONArray();
-//		for(int i = 0; i < list.size(); i ++) {
-			JSONObject json = new JSONObject();
-			json.put("total", list.size());
-			json.put("data", list);
-			
-//		}
+		list = service.getList(offset, size);
+		int count = service.getPageCount();
+		
+		
+		JSONObject json = new JSONObject();
+		json.put("total", count);
+		json.put("data", list);
 //		System.out.println(json.toString());
 		response.setHeader("Access-Control-Allow-Headers", "Content-Type, Accept");
 		response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
 		response.setHeader("Access-Control-Allow-Origin", "*");
-		response.setHeader("Content-type", "text/html;charset=UTF-8");
+		response.setHeader("Content-type", "application/json;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");  
-		response.getWriter().write(json.toString());
+		response.getWriter().print(json.toString());
 		
 	}
 
@@ -61,19 +63,24 @@ public class HelloServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
-//		System.out.println("POST Request...");
-//
-////		Service service = new Service();
-////		list = service.addRecord(request);
-//		
-//		JSONObject json = new JSONObject();
-//		json.put("name", request.getParameter("name"));
-//		json.put("name", request.getParameter("name"));
-//		json.put("name", request.getParameter("name"));
-//		json.put("name", request.getParameter("name"));
-//		
-//		System.out.println();
+//		doGet(request, response);
+		System.out.println("POST Request...");
+
+//		Service service = new Service();
+//		list = service.addRecord(request);
+		
+		JSONObject json = new JSONObject();
+		json.put("name", request.getParameter("name"));
+		json.put("gender", request.getParameter("gender"));
+		json.put("birthday", request.getParameter("birthday"));
+		json.put("phone", request.getParameter("phone"));
+		json.put("idCard", request.getParameter("idCard"));
+//		System.out.println(json);
+//		System.out.println(json.getString("name"));
+
+		Service service = new Service();
+		service.addRecord(json);
+
 		
 	}
 
